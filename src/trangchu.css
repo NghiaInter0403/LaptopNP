@@ -18,13 +18,9 @@ body {
 
 /* Màu khi rê chuột vào */
 .navbar-nav .nav-link:hover {
-  color: #ffc107 !important;  /* xanh dương nhạt */
+  color: #ffc107 !important;
 }
 
-/* Mục đang được chọn (active) */
-.navbar-nav .nav-link.active {
-  color: #ffc107 !important;  /* vàng nổi bật */
-}
 /* Thẻ hàng hóa */
 /* Vùng chứa các thẻ hàng hóa */
 .hanghoa-container {

@@ -1,3 +1,6 @@
+<?php
+include "ketnoi.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +42,7 @@
               <li><a class="dropdown-item" href="#">HP</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="#">Quản Lý Hàng</a></li>
+          <li class="nav-item"><a class="nav-link" href="quanly.html">Quản Lý Hàng</a></li>
         </ul>
 
         <form class="d-flex" role="search">
@@ -58,19 +61,40 @@
         <div class="hanghoa-container">
           <div class="row">
             <!-- Sản phẩm mẫu -->
-            <div class="col-md-3 mb-4">
-              <div class="thehanghoa card">
-                <img src="../img/legion.png" class="card-img-top" alt="Sản phẩm 1">
-                <div class="card-body text-center">
-                  <h5 class="tenhanghoa">LapTop Legion 2023</h5>
-                  <p class="giaban">51.500.000₫</p>
-                  <div class="nut-group">
-                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart-plus"></i> Thêm Giỏ</button>
-                    <button class="btn btn-primary btn-sm"><i class="bi bi-bag-check"></i> Mua</button>
+            <?php
+            // Truy vấn sản phẩm
+            $sql = "SELECT mathang.mamathang, mathang.tenmathang, mathang.giaban, 
+                           thuonghieu.tenthuonghieu, hinh.hinhanh
+                    FROM mathang
+                    JOIN hinh ON mathang.mamathang = hinh.mamathang
+                    JOIN thuonghieu ON mathang.mathuonghieu = thuonghieu.mathuonghieu
+                    ORDER BY mathang.mamathang DESC";
+            
+            $result = $conn->query($sql);
+
+            if ($result && $result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                echo '
+                <div class="col-md-3 mb-4">
+                  <div class="card thehanghoa shadow-sm">
+                    <img src="../img/' . htmlspecialchars($row['hinhanh']) . '" class="card-img-top" alt="' . htmlspecialchars($row['tenmathang']) . '" style="height:200px; object-fit:cover;">
+                    <div class="card-body text-center">
+                      <h5 class="tenhanghoa">' . htmlspecialchars($row['tenmathang']) . '</h5>
+                      <p class="text-muted mb-1">' . htmlspecialchars($row['tenthuonghieu']) . '</p>
+                      <p class="giaban text-danger fw-bold">' . number_format($row['giaban'], 0, ',', '.') . '₫</p>
+                      <div class="nut-group d-flex justify-content-center gap-2">
+                        <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart-plus"></i> Thêm Giỏ</button>
+                        <button class="btn btn-primary btn-sm"><i class="bi bi-bag-check"></i> Mua</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                </div>';
+              }
+            } else {
+              echo "<p class='text-center text-muted'>Chưa có sản phẩm nào.</p>";
+            }
+            ?>
+
 
 <!--hết hàng hóa -->
           </div> <!-- end row -->
