@@ -23,10 +23,10 @@ if (
 
         // Kiểm tra role để chuyển trang
         if ($row['role'] == 'admin') {
-            echo "<script>alert('Bạn đã truy cập với tư cách admin!');  window.location='trangchuad.html';</script>";
+            echo "<script>alert('Bạn đã truy cập với tư cách admin!');  window.location='trangchuad.php';</script>";
             exit();
         } elseif ($row['role'] == 'user') {
-            echo "<script>alert('Bạn đã truy cập với tư cách khách hàng!');  window.location='trangchu.html';</script>";
+            echo "<script>alert('Bạn đã truy cập với tư cách khách hàng!');  window.location='trangchu.php';</script>";
             exit();
         } else {
             echo "<script>alert('Không xác định được quyền truy cập!'); window.history.back();</script>";
