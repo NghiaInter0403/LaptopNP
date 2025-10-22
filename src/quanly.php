@@ -29,26 +29,27 @@ include 'ketnoi.php';
 
       <div class="collapse navbar-collapse" id="menuchinh">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="#">Trang Chủ</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Giỏ Hàng</a></li>
+          <li class="nav-item"><a class="nav-link active" href="trangchuad.php">Trang Chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="giohang.php">Giỏ Hàng</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="nhanhieu" role="button" data-bs-toggle="dropdown">
               Nhãn Hiệu
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Lenovo</a></li>
-              <li><a class="dropdown-item" href="#">Dell</a></li>
-              <li><a class="dropdown-item" href="#">Macbook</a></li>
-              <li><a class="dropdown-item" href="#">Asus</a></li>
-              <li><a class="dropdown-item" href="#">Acer</a></li>
-              <li><a class="dropdown-item" href="#">HP</a></li>
+              <li><a class="dropdown-item" href="lenovo.php">Lenovo</a></li>
+              <li><a class="dropdown-item" href="Dell.php">Dell</a></li>
+              <li><a class="dropdown-item" href="Macbook.php">Macbook</a></li>
+              <li><a class="dropdown-item" href="Asus.php">Asus</a></li>
+              <li><a class="dropdown-item" href="Acer.php">Acer</a></li>
+              <li><a class="dropdown-item" href="HP.php">HP</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="quanly.html">Quản Lý Hàng</a></li>
+          <li class="nav-item"><a class="nav-link" href="quanly.php">Quản Lý Hàng</a></li>
         </ul>
 
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm...">
+        <form class="d-flex" role="search" method="GET" action="">
+          <input class="form-control me-2" type="search" name="tukhoa" placeholder="Tìm kiếm sản phẩm..." 
+                 value="<?php if(isset($_GET['tukhoa'])) echo htmlspecialchars($_GET['tukhoa']); ?>">
           <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
         </form>
       </div>
@@ -91,13 +92,20 @@ include 'ketnoi.php';
                 </thead>
                 <tbody>
                   <?php
+                  // có từ khóa tìm kiếm
+                  $tukhoa = '';
+                   if (isset($_GET['tukhoa']) && !empty(trim($_GET['tukhoa']))) {
+                    $tukhoa = trim($_GET['tukhoa']);
+                  }
                   // Truy vấn lấy dữ liệu từ 3 bảng
                   $sql = "SELECT mathang.mamathang, mathang.tenmathang, mathang.motasanpham,
                                  thuonghieu.tenthuonghieu, hinh.hinhanh
                           FROM mathang
                           JOIN hinh ON mathang.mamathang = hinh.mamathang
                           JOIN thuonghieu ON mathang.mathuonghieu = thuonghieu.mathuonghieu";
-
+                  if (!empty($tukhoa)) {
+                    $sql .= " WHERE mathang.tenmathang LIKE '%" . $conn->real_escape_string($tukhoa) . "%'";
+                  }
                   $result = $conn->query($sql);
 
                   if ($result && $result->num_rows > 0) {

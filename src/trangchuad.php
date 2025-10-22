@@ -34,15 +34,15 @@ include "ketnoi.php";
               Nhãn Hiệu
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="nhanhieu/lenovo.php">Lenovo</a></li>
-              <li><a class="dropdown-item" href="nhanhieu/Dell.php">Dell</a></li>
-              <li><a class="dropdown-item" href="nhanhieu/Macbook.php">Macbook</a></li>
-              <li><a class="dropdown-item" href="nhanhieu/Asus.php">Asus</a></li>
-              <li><a class="dropdown-item" href="nhanhieu/Acer.php">Acer</a></li>
-              <li><a class="dropdown-item" href="nhanhieu/HP.php">HP</a></li>
+              <li><a class="dropdown-item" href="lenovo.php">Lenovo</a></li>
+              <li><a class="dropdown-item" href="Dell.php">Dell</a></li>
+              <li><a class="dropdown-item" href="Macbook.php">Macbook</a></li>
+              <li><a class="dropdown-item" href="Asus.php">Asus</a></li>
+              <li><a class="dropdown-item" href="Acer.php">Acer</a></li>
+              <li><a class="dropdown-item" href="HP.php">HP</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="quanly.html">Quản Lý Hàng</a></li>
+          <li class="nav-item"><a class="nav-link" href="quanly.php">Quản Lý Hàng</a></li>
         </ul>
 
         <form class="d-flex" role="search" method="GET" action="">
@@ -104,9 +104,6 @@ include "ketnoi.php";
               echo "<p class='text-center text-muted'>Không tìm thấy sản phẩm nào.</p>";
             }
             ?>
-            ?>
-
-
 <!--hết hàng hóa -->
           </div> <!-- end row -->
         </div>
