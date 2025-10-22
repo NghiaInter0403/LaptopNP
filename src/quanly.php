@@ -63,10 +63,10 @@ include 'ketnoi.php';
 
         <!-- Hai nút trên cùng -->
         <div class="d-flex justify-content-center mb-4 gap-3">
-          <a href="them_sanpham.php" class="btn btn-success">
+          <a href="themsp.php" class="btn btn-success">
             <i class="bi bi-plus-circle"></i> Thêm sản phẩm
           </a>
-          <a href="xem_donhang.php" class="btn btn-primary">
+          <a href="xemdon.php" class="btn btn-primary">
             <i class="bi bi-receipt"></i> Xem đơn hàng
           </a>
         </div>
@@ -84,6 +84,7 @@ include 'ketnoi.php';
                     <th scope="col">Mã SP</th>
                     <th scope="col">Hình</th>
                     <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Giá Bán (VND)</th>
                     <th scope="col">Nhãn hiệu</th>
                     <th scope="col">Mô tả</th>
                     <th scope="col">Sửa</th>
@@ -98,7 +99,7 @@ include 'ketnoi.php';
                     $tukhoa = trim($_GET['tukhoa']);
                   }
                   // Truy vấn lấy dữ liệu từ 3 bảng
-                  $sql = "SELECT mathang.mamathang, mathang.tenmathang, mathang.motasanpham,
+                  $sql = "SELECT mathang.mamathang, mathang.tenmathang, mathang.giaban, mathang.motasanpham,
                                  thuonghieu.tenthuonghieu, hinh.hinhanh
                           FROM mathang
                           JOIN hinh ON mathang.mamathang = hinh.mamathang
@@ -114,6 +115,7 @@ include 'ketnoi.php';
                       echo '<td>' . htmlspecialchars($row['mamathang']) . '</td>';
                       echo '<td><img src="../img/' . htmlspecialchars($row['hinhanh']) . '" alt="Hình SP" style="width:80px; height:80px; object-fit:cover;"></td>';
                       echo '<td>' . htmlspecialchars($row['tenmathang']) . '</td>';
+                      echo '<td>' . number_format($row['giaban'],0,',','.'). '</td>';
                       echo '<td>' . htmlspecialchars($row['tenthuonghieu']) . '</td>';
                       echo '<td class="text-start">' . htmlspecialchars($row['motasanpham']) . '</td>';
                       echo '<td><a href="sua_sanpham.php?id=' . $row['mamathang'] . '" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Sửa</a></td>';
