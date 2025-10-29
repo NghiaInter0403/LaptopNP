@@ -1,7 +1,4 @@
-<?php 
-// khởi tạo session 
-session_start(); 
-?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -57,10 +54,7 @@ session_start();
         <a href="dangki.html">Bạn chưa có tài khoản? Đăng kí ngay</a>
       </div>
     </form>
-    <?php
-      // lưu thông tin đăng nhập vào session nếu đã đăng nhập
-      $_SESSION['tendn']=$tendn; // lưu tên đăng nhập vào session
-    ?>
+
   </div>
 
   <!-- Bootstrap JS -->
