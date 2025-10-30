@@ -27,7 +27,6 @@ body {
   background-color: rgba(0, 0, 0, 0);
   padding: 20px;
 }
-
 /* Mỗi sản phẩm */
 .thehanghoa {
   border: none;
@@ -38,7 +37,7 @@ body {
   overflow: hidden;
   width: 200px;
   height: 320px;
-  margin-bottom: 10px; /* 💡 thêm khoảng cách dọc giữa các hàng */
+  margin-bottom: 10px;
   position: relative;
   z-index: 0; /* đảm bảo không đè */
 }
