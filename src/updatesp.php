@@ -43,17 +43,26 @@
   }
 </style>
 </head>
-
+<?php
+// Lấy thông tin sản phẩm từ cơ sở dữ liệu dựa trên ID truyền vào
+$masp = $_GET['id'];
+$sql = "SELECT * FROM mathang WHERE mamathang = '$masp'";
+$ketqua=mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($ketqua);
+// lấy tt đưa vào cbx nhãn hàng
+$sql1="Select * FROM thuonghieu";
+$kq2=mysqli_query($conn, $sql1);
+?>
 <body>
   <div class="khungtrang">
     <h4><b>Cập Nhật Sản Phẩm</b></h4>
 
-    <form action="xulythemsp.php" method="POST" enctype="multipart/form-data">
+    <form action="capnhat.php" method="POST">
       
       <!-- Tên sản phẩm -->
       <div class="mb-3">
         <label for="tensp" class="form-label"><i class="bi bi-box-seam-fill"></i> Tên sản phẩm</label>
-        <input type="text" class="form-control" id="tensp" name="tensp" placeholder="Nhập tên sản phẩm" required>
+        <input type="text" class="form-control" id="tensp" name="tensp" value="<?php echo $row['tenmathang'] ?>" required>
       </div>
       
       <!-- List thương hiệu -->
@@ -63,36 +72,35 @@
           <option value="" selected disabled>Chọn nhãn hiệu</option>
           <!-- Các tùy chọn nhãn hiệu sẽ được tải từ cơ sở dữ liệu -->
           <?php
-            // Truy vấn lấy danh sách nhãn hiệu
-            $sql = "SELECT mathuonghieu, tenthuonghieu FROM thuonghieu";
-            $result = $conn->query($sql);
+             // Truy vấn danh sách thương hiệu
+             $sql_th = "SELECT mathuonghieu, tenthuonghieu FROM thuonghieu";
+             $kq_th = mysqli_query($conn, $sql_th);
 
-            if ($result->num_rows > 0) {
-              // Hiển thị từng nhãn hiệu
-              while($row = $result->fetch_assoc()) {
-                echo "<option value='" . $row["mathuonghieu"] . "'>" . $row["tenthuonghieu"] . "</option>";
-              }
-            } else {
-              echo "<option value=''>Không có nhãn hiệu nào</option>";
-            }
+            // Giả sử trong bảng mathang có cột 'mathuonghieu' để biết sản phẩm thuộc thương hiệu nào
+            $thuonghieu_hien_tai = $row['mathuonghieu']; // giá trị thương hiệu của sản phẩm đang sửa
 
-            // Đóng kết nối
-            $conn->close();
-          ?>
+            while ($th = mysqli_fetch_assoc($kq_th)) {
+        // Nếu thương hiệu hiện tại trùng thì đánh dấu selected
+            $selected = ($th['mathuonghieu'] == $thuonghieu_hien_tai) ? 'selected' : '';
+            echo "<option value='{$th['mathuonghieu']}' $selected>{$th['tenthuonghieu']}</option>";
+      }
+    ?>
         </select>
       </div>
       
       <!-- Giá bán -->
       <div class="mb-3">
         <label for="giaban" class="form-label"><i class="bi bi-currency-dollar"></i> Giá bán</label>
-        <input type="number" class="form-control" id="giaban" name="giaban" placeholder="Nhập giá bán" min="0" step="0.01" required>
+        <input type="number" class="form-control" id="giaban" name="giaban" value ="<?php echo $row['giaban']; ?>" required>
       </div>
 
       <!-- Mô tả sản phẩm -->
       <div class="mb-3">
-        <label for="motasp" class="form-label"><i class="bi bi-file-text-fill"></i> Mô tả sản phẩm</label>
-        <textarea class="form-control" id="motasp" name="motasp" rows="5" placeholder="Nhập mô tả sản phẩm" required></textarea>
-      </div>
+      <label for="motasp" class="form-label">
+         <i class="bi bi-file-text-fill"></i> Mô tả sản phẩm
+        </label>
+       <textarea class="form-control" id="motasp" name="motasp" rows="5" required><?php echo $row['motasanpham']; ?></textarea>
+</div>
 
       <button type="submit" class="btn btn-primary" name="capnhat">
         <i class="bi bi-plus-circle-fill"></i> Cập Nhật
