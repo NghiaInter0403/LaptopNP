@@ -29,11 +29,11 @@ include 'ketnoi.php';
 
       <div class="collapse navbar-collapse" id="menuchinh">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="trangchuad.php">Trang Chủ</a></li>
-          <li class="nav-item"><a class="nav-link" href="giohang.php">Giỏ Hàng</a></li>
+          <li class="nav-item"><a class="nav-link active" href="trangchuad.php"><i class="bi bi-house-door-fill"></i> Trang Chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="giohang.php"><i class="bi bi-bag-plus-fill"></i> Giỏ Hàng</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="nhanhieu" role="button" data-bs-toggle="dropdown">
-              Nhãn Hiệu
+             <i class="bi bi-info-square-fill"></i> Nhãn Hiệu
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="lenovo.php">Lenovo</a></li>
@@ -44,7 +44,7 @@ include 'ketnoi.php';
               <li><a class="dropdown-item" href="HP.php">HP</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="quanly.php">Quản Lý Hàng</a></li>
+          <li class="nav-item"><a class="nav-link" href="quanly.php"><i class="bi bi-kanban-fill"></i> Quản Lý Hàng</a></li>
         </ul>
 
         <form class="d-flex" role="search" method="GET" action="">
