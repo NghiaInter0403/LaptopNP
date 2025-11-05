@@ -118,8 +118,8 @@ include 'ketnoi.php';
                       echo '<td>' . number_format($row['giaban'],0,',','.'). '</td>';
                       echo '<td>' . htmlspecialchars($row['tenthuonghieu']) . '</td>';
                       echo '<td class="text-start">' . htmlspecialchars($row['motasanpham']) . '</td>';
-                      echo '<td><a href="sua_sanpham.php?id=' . $row['mamathang'] . '" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Sửa</a></td>';
-                      echo '<td><a href="xoa_sanpham.php?id=' . $row['mamathang'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Bạn có chắc muốn xóa sản phẩm này?\')"><i class="bi bi-trash"></i> Xóa</a></td>';
+                      echo '<td><a href="updatesp.php?id=' . $row['mamathang'] . '" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Sửa</a></td>';
+                      echo '<td><a href="deletesp.php?id=' . $row['mamathang'] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'Bạn có chắc muốn xóa sản phẩm này?\')"><i class="bi bi-trash"></i> Xóa</a></td>';
                       echo '</tr>';
                     }
                   } else {

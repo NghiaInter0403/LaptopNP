@@ -6,17 +6,17 @@ body {
 body {
   background-color: #f8f9fa;
 }
-/* Thanh menu */
+/* Thanh menu  */
 .nenxanh {
   background-color: #0000004b;
 }
-/* Màu chữ mặc định của các mục trong nav */
+/* Màu chữ nav */
 .navbar-nav .nav-link {
-  color: #ffffff !important;  /* chữ trắng */
+  color: #ffffff !important;
   font-weight: 500;
 }
 
-/* Màu khi rê chuột vào */
+/* Màu khi Đụng vào */
 .navbar-nav .nav-link:hover {
   color: #ffc107 !important;
 }
@@ -39,9 +39,9 @@ body {
   height: 320px;
   margin-bottom: 10px;
   position: relative;
-  z-index: 0; /* đảm bảo không đè */
+  z-index: 0;
 }
-
+/* hình tromg hàng hóa */
 .thehanghoa img {
   width: 100%;
   height: 60%;
@@ -50,24 +50,21 @@ body {
   border-top-right-radius: 10px;
 }
 
-/* Hover giữ nguyên vị trí, không phá layout */
+/* Hover the hàng hóa*/
 .thehanghoa:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  z-index: 10; /* nổi lên trên, KHÔNG đè lên các thẻ khác */
+  z-index: 10;
 }
 
-/* Bootstrap cột — giữ khoảng cách ngang */
+/* Bootstrap cột */
 .col-md-3 {
-  padding: 10px; /* 👈 thêm khoảng cách giữa các cột */
+  padding: 10px; 
 }
-
-
 .tenhanghoa {
   font-size: 1.1rem;
   font-weight: bold;
 }
-
 .giaban {
   color: #d9534f;
   font-weight: 600;

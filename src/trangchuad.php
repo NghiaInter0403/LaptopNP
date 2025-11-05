@@ -94,7 +94,9 @@ include "ketnoi.php";
                       <p class="giaban text-danger fw-bold">' . number_format($row['giaban'],0,',','.') . '₫</p>
                       <div class="nut-group d-flex justify-content-center gap-2">
                         <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart-plus"></i> Thêm Giỏ</button>
-                        <button class="btn btn-primary btn-sm"> chi tiết</button>
+                        <div class="chitiet">
+                        <button class="btn btn-primary btn-sm" action =chitiet.php?masanpham > chi tiết</button>
+                        </div>
                       </div>
                     </div>
                   </div>
