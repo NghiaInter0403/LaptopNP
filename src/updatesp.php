@@ -57,7 +57,7 @@ $kq2=mysqli_query($conn, $sql1);
   <div class="khungtrang">
     <h4><b>Cập Nhật Sản Phẩm</b></h4>
 
-    <form action="capnhat.php" method="POST">
+    <form action="capnhat.php?id=<?php echo $masp; ?>" method="POST">
       
       <!-- Tên sản phẩm -->
       <div class="mb-3">
