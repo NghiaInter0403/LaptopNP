@@ -6,6 +6,13 @@ body {
 body {
   background-color: #f8f9fa;
 }
+body {
+      min-height: 200vh; /* Tạo nội dung dài để có thể cuộn */
+      margin: 0;
+      background: linear-gradient(to bottom, #222, #555);
+      color: white;
+      font-family: sans-serif;
+    }
 /* Thanh menu  */
 .nenxanh {
   background-color: #0000004b;
@@ -76,8 +83,17 @@ body {
 
 /* Chân trang */
 .chantrang {
-  background-color: #00000051;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
+      background-color: #00000051;
+      position: fixed;
+      bottom: -120px; /* Ẩn ra ngoài khung hình */
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      transition: bottom 0.5s ease;
+      padding: 1rem;
+      margin-top: 20px;
+    }
+
+    .chantrang.show {
+      bottom: 0; /* Trượt lên khi hiển thị */
+    }
