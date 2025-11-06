@@ -95,8 +95,12 @@ include "ketnoi.php";
                       <div class="nut-group d-flex justify-content-center gap-2">
                         <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart-plus"></i> Thêm Giỏ</button>
                         <div class="chitiet">
-                        <button class="btn btn-primary btn-sm" action =chitiet.php?masanpham > chi tiết</button>
-                        </div>
+                            <a href="chitietsp.php?masanpham=' .$row['mamathang'].' method=POST" 
+                             class="btn btn-primary btn-sm" 
+                             style="text-decoration: none; color: white;">
+                             Chi tiết
+                               </a>
+                              </div>
                       </div>
                     </div>
                   </div>
