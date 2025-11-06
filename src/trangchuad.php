@@ -10,6 +10,17 @@ include "ketnoi.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="trangchu.css">
+  <style>
+.hanghoa-container .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.hanghoa-container .card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+</style>
 </head>
 <body>
     <!-- Thanh điều hướng -->
@@ -85,26 +96,32 @@ include "ketnoi.php";
             if ($result && $result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
                 echo '
-                <div class="col-md-3 mb-4">
-                  <div class="card thehanghoa shadow-sm">
-                    <img src="../img/' . htmlspecialchars($row['hinhanh']) . '" class="card-img-top" alt="' . htmlspecialchars($row['tenmathang']) . '" style="height:200px; object-fit:cover;">
-                    <div class="card-body text-center">
-                      <h5 class="tenhanghoa">' . htmlspecialchars($row['tenmathang']) . '</h5>
-                      <p class="text-muted mb-1">' . htmlspecialchars($row['tenthuonghieu']) . '</p>
-                      <p class="giaban text-danger fw-bold">' . number_format($row['giaban'],0,',','.') . '₫</p>
-                      <div class="nut-group d-flex justify-content-center gap-2">
-                        <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart-plus"></i> Thêm Giỏ</button>
-                        <div class="chitiet">
-                            <a href="chitietsp.php?masanpham=' .$row['mamathang'].' method=POST" 
-                             class="btn btn-primary btn-sm" 
-                             style="text-decoration: none; color: white;">
-                             Chi tiết
-                               </a>
-                              </div>
+                 <div class="col-md-3 mb-4 d-flex">
+                   <div class="card shadow-sm w-100">
+                      <div class="ratio ratio-4x3">
+                        <img src="../img/' . htmlspecialchars($row['hinhanh']) . '" 
+                        class="card-img-top object-fit-contain p-3" 
+                         alt="' . htmlspecialchars($row['tenmathang']) . '">
                       </div>
-                    </div>
-                  </div>
-                </div>';
+                 <div class="card-body text-center d-flex flex-column justify-content-between">
+                   <div>
+                   <h5 class="fw-semibold mb-1">' . htmlspecialchars($row['tenmathang']) . '</h5>
+                   <p class="text-muted mb-1">' . htmlspecialchars($row['tenthuonghieu']) . '</p>
+                  <p class="text-danger fw-bold fs-6">' . number_format($row['giaban'],0,',','.') . '₫</p>
+                </div>
+                <div class="d-flex justify-content-center gap-2 mt-2">
+                <button class="btn btn-outline-primary btn-sm flex-fill">
+                <i class="bi bi-cart-plus"></i> Thêm Giỏ
+                </button>
+                <a href="chitietsp.php?masanpham=' . $row['mamathang'] . '" 
+                 class="btn btn-primary btn-sm flex-fill">
+                   Chi tiết
+                  </a>
+               </div>
+              </div>
+           </div>
+        </div>';
+
               }
             } else {
               echo "<p class='text-center text-muted'>Không tìm thấy sản phẩm nào.</p>";

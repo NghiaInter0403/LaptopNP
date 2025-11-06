@@ -1,18 +1,15 @@
 body {
-    background: url('../img/bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Segoe UI', sans-serif;
-  }
-body {
-  background-color: #f8f9fa;
+ 
+  background: url('../img/bg.jpg') no-repeat center center fixed, 
+              linear-gradient(to bottom, #222, #555);
+  background-size: cover;
+  background-color: #f8f9fa; 
+  
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  min-height: 200vh; 
+  margin: 0;
 }
-body {
-      min-height: 200vh; /* Tạo nội dung dài để có thể cuộn */
-      margin: 0;
-      background: linear-gradient(to bottom, #222, #555);
-      color: white;
-      font-family: sans-serif;
-    }
 /* Thanh menu  */
 .nenxanh {
   background-color: #0000004b;
@@ -28,57 +25,14 @@ body {
   color: #ffc107 !important;
 }
 
-/* Thẻ hàng hóa */
-/* Vùng chứa các thẻ hàng hóa */
-.hanghoa-container {
-  background-color: rgba(0, 0, 0, 0);
-  padding: 20px;
-}
-/* Mỗi sản phẩm */
-.thehanghoa {
-  border: none;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+/* card  */
+.hanghoa-container .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #ffffffcc;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 200px;
-  height: 320px;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 0;
-}
-/* hình tromg hàng hóa */
-.thehanghoa img {
-  width: 100%;
-  height: 60%;
-  object-fit: cover;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
-/* Hover the hàng hóa*/
-.thehanghoa:hover {
+.hanghoa-container .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
 
-/* Bootstrap cột */
-.col-md-3 {
-  padding: 10px; 
-}
-.tenhanghoa {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-.giaban {
-  color: #d9534f;
-  font-weight: 600;
-}
-
-.nut-group button {
-  margin: 3px;
-}
-
-/* Chân trang */
