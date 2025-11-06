@@ -82,18 +82,3 @@ body {
 }
 
 /* Chân trang */
-.chantrang {
-      background-color: #00000051;
-      position: fixed;
-      bottom: -120px; /* Ẩn ra ngoài khung hình */
-      width: 100%;
-      text-align: center;
-      color: #fff;
-      transition: bottom 0.5s ease;
-      padding: 1rem;
-      margin-top: 20px;
-    }
-
-    .chantrang.show {
-      bottom: 0; /* Trượt lên khi hiển thị */
-    }

@@ -121,11 +121,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 ?>
 </div>
 
-<footer class="chantrang">
-  <p>Sản phẩm của sinh viên CTEC - Trường Cao Đẳng Kinh Tế Kỹ Thuật Cần Thơ</p>
-  <p>Người thực hiện: Phan Hiếu Nghĩa MSSV: 23CTHA0372</p>
-  <p>Liên hệ: 0352755926 - phanhieunghia13052019@gmail.com</p>
-</footer>
+
 
 </body>
 </html>
