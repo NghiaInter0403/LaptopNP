@@ -96,31 +96,34 @@ include "ketnoi.php";
             if ($result && $result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
                 echo '
-                 <div class="col-md-3 mb-4 d-flex">
-                   <div class="card shadow-sm w-100">
-                      <div class="ratio ratio-4x3">
-                        <img src="../img/' . htmlspecialchars($row['hinhanh']) . '" 
-                        class="card-img-top object-fit-contain p-3" 
-                         alt="' . htmlspecialchars($row['tenmathang']) . '">
+                <div class="col-md-3 mb-4 d-flex">
+                  <div class="card shadow-sm w-100">
+                     <div class="ratio ratio-4x3">
+                      <img src="../img/' . htmlspecialchars($row['hinhanh']) . '" 
+                       class="card-img-top object-fit-contain p-3" 
+                       alt="' . htmlspecialchars($row['tenmathang']) . '">
+                     </div>
+                  <div class="card-body text-center d-flex flex-column justify-content-between">
+                     <div>
+                      <h5 class="fw-semibold mb-1">' . htmlspecialchars($row['tenmathang']) . '</h5>
+                      <p class="text-muted mb-1">' . htmlspecialchars($row['tenthuonghieu']) . '</p>
+                      <p class="text-danger fw-bold fs-6">' . number_format($row['giaban'], 0, ',', '.') . '₫</p>
                       </div>
-                 <div class="card-body text-center d-flex flex-column justify-content-between">
-                   <div>
-                   <h5 class="fw-semibold mb-1">' . htmlspecialchars($row['tenmathang']) . '</h5>
-                   <p class="text-muted mb-1">' . htmlspecialchars($row['tenthuonghieu']) . '</p>
-                  <p class="text-danger fw-bold fs-6">' . number_format($row['giaban'],0,',','.') . '₫</p>
-                </div>
-                <div class="d-flex justify-content-center gap-2 mt-2">
-                <button class="btn btn-outline-primary btn-sm flex-fill">
-                <i class="bi bi-cart-plus"></i> Thêm Giỏ
-                </button>
-                <a href="chitietsp.php?masanpham=' . $row['mamathang'] . '" 
+                  <div class="d-flex justify-content-center gap-2 mt-2">
+                 <a href="giohangsp.php?masanpham=' . $row['mamathang'] . '" 
+                 class="btn btn-outline-primary btn-sm flex-fill">
+                 <i class="bi bi-cart-plus"></i> Thêm Giỏ
+                   </a>
+
+                 <a href="chitietsp.php?masanpham=' . $row['mamathang'] . '" 
                  class="btn btn-primary btn-sm flex-fill">
-                   Chi tiết
-                  </a>
-               </div>
+                 Chi tiết
+                 </a>
               </div>
            </div>
-        </div>';
+         </div>
+       </div>';
+
 
               }
             } else {
