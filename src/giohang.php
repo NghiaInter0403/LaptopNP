@@ -121,6 +121,81 @@ session_start();
              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                </div>
             </div>
+            <!-- hiển thị sản phẩm đã thêm-->
+             <?php
+$id_user = $_SESSION['id_user'];
+
+$sql = "SELECT g.*, m.tenmathang, m.giaban 
+        FROM giohang g 
+        JOIN mathang m ON g.mamathang = m.mamathang
+        WHERE g.id_user = $id_user";
+$result = mysqli_query($conn, $sql);
+?>
+
+<div class="card shadow p-4 mt-4">
+  <h4 class="mb-3 text-primary"><i class="bi bi-bag-check-fill"></i> Giỏ hàng của bạn</h4>
+
+  <table class="table table-bordered align-middle text-center">
+    <thead class="table-primary">
+      <tr>
+        <th>Tên mặt hàng</th>
+        <th>Giá bán</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      $tongtien = 0;
+      if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          $thanhtien = $row['giaban'] * $row['soluong'];
+          $tongtien += $thanhtien;
+          echo "
+          <tr>
+            <td class='text-start fw-semibold'>{$row['tenmathang']}</td>
+            <td>" . number_format($row['giaban'], 0, ',', '.') . "₫</td>
+            <td>
+              <div class='d-flex justify-content-center align-items-center'>
+                <a href='update_soluong.php?mamathang={$row['mamathang']}&action=tru' class='btn btn-sm btn-outline-secondary me-1'>
+                  <i class='bi bi-dash'></i>
+                </a>
+                <span class='fw-bold'>{$row['soluong']}</span>
+                <a href='update_soluong.php?mamathang={$row['mamathang']}&action=cong' class='btn btn-sm btn-outline-secondary ms-1'>
+                  <i class='bi bi-plus'></i>
+                </a>
+              </div>
+            </td>
+            <td class='text-danger fw-semibold'>" . number_format($thanhtien, 0, ',', '.') . "₫</td>
+            <td>
+              <a href='xoa_giohang.php?mamathang={$row['mamathang']}' class='btn btn-sm btn-danger'>
+                <i class='bi bi-trash3-fill'></i> Xóa
+              </a>
+            </td>
+          </tr>";
+        }
+        echo "
+        <tr class='table-light'>
+          <td colspan='3' class='text-end fw-bold'>Tổng cộng:</td>
+          <td colspan='2' class='text-danger fw-bold'>" . number_format($tongtien, 0, ',', '.') . "₫</td>
+        </tr>";
+      } else {
+        echo "<tr><td colspan='5'>Giỏ hàng trống</td></tr>";
+      }
+      ?>
+    </tbody>
+  </table>
+
+  <?php if ($tongtien > 0) { ?>
+  <div class="text-end mt-3">
+    <a href="dondathang.php" class="btn btn-success btn-lg">
+      <i class="bi bi-credit-card"></i> Mua hàng
+    </a>
+  </div>
+  <?php } ?>
+</div>
+<!-- hết hiển thị sản phẩm đã thêm-->
       </div>
       <div class="col-1"></div>
     </div>

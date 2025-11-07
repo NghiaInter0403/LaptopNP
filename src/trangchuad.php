@@ -110,7 +110,7 @@ include "ketnoi.php";
                       <p class="text-danger fw-bold fs-6">' . number_format($row['giaban'], 0, ',', '.') . '₫</p>
                       </div>
                   <div class="d-flex justify-content-center gap-2 mt-2">
-                 <a href="giohangsp.php?masanpham=' . $row['mamathang'] . '" 
+                 <a href="themgiohang.php?mamathang=' . $row['mamathang'] . '" 
                  class="btn btn-outline-primary btn-sm flex-fill">
                  <i class="bi bi-cart-plus"></i> Thêm Giỏ
                    </a>
