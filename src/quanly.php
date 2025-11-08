@@ -33,15 +33,13 @@ include 'ketnoi.php';
           <li class="nav-item"><a class="nav-link" href="giohang.php"><i class="bi bi-bag-plus-fill"></i> Giỏ Hàng</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="nhanhieu" role="button" data-bs-toggle="dropdown">
-             <i class="bi bi-info-square-fill"></i> Nhãn Hiệu
+             <i class="bi bi-info-square-fill"></i> Liên Hệ
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="lenovo.php">Lenovo</a></li>
-              <li><a class="dropdown-item" href="Dell.php">Dell</a></li>
-              <li><a class="dropdown-item" href="Macbook.php">Macbook</a></li>
-              <li><a class="dropdown-item" href="Asus.php">Asus</a></li>
-              <li><a class="dropdown-item" href="Acer.php">Acer</a></li>
-              <li><a class="dropdown-item" href="HP.php">HP</a></li>
+              <li><a class="dropdown-item" href="https://www.facebook.com/nghia.phan.76243?locale=vi_VN">Messages</a></li>
+              <li><a class="dropdown-item" href="https://www.tiktok.com/@nghiaphanhihihi">TikTok</a></li>
+              <li><a class="dropdown-item" href="https://www.instagram.com/nghia6485/">Instargam</a></li>
+              
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="quanly.php"><i class="bi bi-kanban-fill"></i> Quản Lý Hàng</a></li>
