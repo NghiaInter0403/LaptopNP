@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2025 lúc 05:19 PM
+-- Thời gian đã tạo: Th10 08, 2025 lúc 03:21 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -44,9 +44,21 @@ CREATE TABLE `dondathang` (
   `madondathang` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `ngaydat` date NOT NULL,
-  `ngaynhan` date DEFAULT NULL,
   `noigiao` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `giohang`
+--
+
+CREATE TABLE `giohang` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `mamathang` int(11) NOT NULL,
+  `soluong` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 -- --------------------------------------------------------
 
@@ -59,6 +71,24 @@ CREATE TABLE `hinh` (
   `mamathang` int(11) DEFAULT NULL,
   `hinhanh` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `hinh`
+--
+
+INSERT INTO `hinh` (`mahinh`, `mamathang`, `hinhanh`) VALUES
+(1, 1, 'legion.png'),
+(2, 2, 'dellinspiron.png'),
+(4, 4, 'hppavilion.png'),
+(5, 5, 'loq.png'),
+(6, 6, 'slim7.png'),
+(7, 7, 'thinkpad.png'),
+(8, 8, 'thinkbook.png'),
+(9, 9, 'ideapad.png'),
+(10, 10, 'hp14.png'),
+(11, 11, 'HP245.png'),
+(12, 12, 'hpvitus16.png'),
+(13, 13, 'HP250G9.png');
 
 -- --------------------------------------------------------
 
@@ -73,6 +103,24 @@ CREATE TABLE `mathang` (
   `giaban` decimal(15,2) NOT NULL CHECK (`giaban` >= 0),
   `motasanpham` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `mathang`
+--
+
+INSERT INTO `mathang` (`mamathang`, `tenmathang`, `mathuonghieu`, `giaban`, `motasanpham`) VALUES
+(1, 'Lenovo legion 5', 1, 30000000.00, 'RTX 4050, Ram 16Gb, SSD 512gb, Tảng nhiệt siêu mát, màng hình tần số quét 120Hz'),
+(2, 'Dell Inspiron', 2, 18000000.00, 'I7-1255U/16GB/1TB PCIE/15.6 FHD/CẢM ỨNG/WIN11/ĐEN'),
+(4, 'hpdalivion', 6, 19000000.00, 'I5-1335U/16GB/512GB PCIE/14.0 FHD/WIN11/BẠC'),
+(5, 'Lenovo LOQ', 1, 22190000.00, 'R5-7235HS/16GB/1TB PCIE/VGA 6GB RTX3050/15.6 FHD 144HZ/WIN11/XÁM'),
+(6, 'Lenovo Slim 7', 1, 23990000.00, 'Core i5-1135G7/8GB/512GB PCIE/14.0 FHD/WIN10/XANH 82A3002QVN'),
+(7, 'Lenovo thinkpad', 1, 28990000.00, 'Ultra 5 225U, 16GB, 512GSSD, 14.0 WUXGA, NoOs, Đen'),
+(8, 'Lenovo ThinkBook', 1, 22190000.00, 'R5-7235HS/16GB/1TB PCIE/VGA 6GB RTX3050/15.6 FHD 144HZ/WIN11/XÁM'),
+(9, 'Lenovo idea pad', 1, 14690000.00, 'I5-1135G7/8GB/256GB PCIE/15.6 FHD/WIN11/XÁM'),
+(10, 'HP 14 ', 6, 15290000.00, 'I5-1335U/16GB/512GB PCIE/14.0 FHD/WIN11/BẠC'),
+(11, 'HP 245 G10 BG5U8PT', 6, 14090000.00, 'R7-7730U/16GB/512GB PCIE/14.0 FHD/WIN11/BẠC'),
+(12, 'HP Victus 16', 6, 22990000.00, 'R5-7640HS/32GB/512GB PCIE/VGA 6GB RTX4050/16.1 FHD'),
+(13, 'HP 250 G9', 6, 13990000.00, 'I5-1235U/16GB/512GB PCIE/15.6 FHD/WIN11/BẠC');
 
 -- --------------------------------------------------------
 
@@ -142,6 +190,14 @@ ALTER TABLE `dondathang`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Chỉ mục cho bảng `giohang`
+--
+ALTER TABLE `giohang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `mamathang` (`mamathang`);
+
+--
 -- Chỉ mục cho bảng `hinh`
 --
 ALTER TABLE `hinh`
@@ -179,16 +235,22 @@ ALTER TABLE `dondathang`
   MODIFY `madondathang` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `giohang`
+--
+ALTER TABLE `giohang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT cho bảng `hinh`
 --
 ALTER TABLE `hinh`
-  MODIFY `mahinh` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mahinh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `mathang`
 --
 ALTER TABLE `mathang`
-  MODIFY `mamathang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mamathang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `thuonghieu`
@@ -218,6 +280,13 @@ ALTER TABLE `chitiethoadon`
 --
 ALTER TABLE `dondathang`
   ADD CONSTRAINT `dondathang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `giohang`
+--
+ALTER TABLE `giohang`
+  ADD CONSTRAINT `giohang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `giohang_ibfk_2` FOREIGN KEY (`mamathang`) REFERENCES `mathang` (`mamathang`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `hinh`
